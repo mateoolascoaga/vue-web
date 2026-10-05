@@ -4,27 +4,35 @@ import { Button } from '@/components/ui/button'
 
 <template>
 
-  <div class="fondo-home">
+  <div class="bg-domus-navy h-screen w-screen text-white font-sans text-center flex flex-col justify-center items-center gap-12 fixed overflow-hidden">
 
-    <h1>
-      <span>Diseño</span> Web y <br> Apps <span>Interactivas</span>
+    <img class="absolute opacity-20" src="/imagines/tonitrui.png"/>
+
+    <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold pb-20 transition-all z-10">
+      <span class="text-domus-cyan">Diseño</span> Web y 
+      <br> 
+      Apps <span class="text-domus-cyan">Interactivas</span>
     </h1>
 
+    <p class=" text-lg md:text-2xl transition-all">
 
-    <div class="botones">
-      <Button>
+      Aprendiendo a crear aplicaciones web
+    </p>
+
+    <div class="z-10">
+      <Button variant="domus">
         <RouterLink to="/indecision">Sí o no</RouterLink>
       </Button>
       
-      <Button>
+      <Button variant="domus">
         <RouterLink to="/batman">Batman</RouterLink>
       </Button>
       
-      <Button>
+      <Button variant="domus">
         <RouterLink to="/simpsons">Simpsons</RouterLink>
       </Button>
        
-      <Button>
+      <Button variant="domus">
         <a href="https://www.upv.es">UPV</a>
       </Button>
 
@@ -34,27 +42,5 @@ import { Button } from '@/components/ui/button'
 </template>
 
 <style scoped>
-
-h1 {
-  font-size: 3rem;
-
-}
-
-.fondo-home {
-  background-color: rgb(21, 25, 52);
-  height: 100vh;
-  color: rgb(24, 182, 246);
-}
-
-
-.botones > Button {
-  margin-right: 0.5rem;
-  background-color: rgb(24, 182, 246);
-} 
-
-
-.botones > Button:hover {
-  background-color: rgba(24, 182, 246, 0.7);
-} 
 
 </style>

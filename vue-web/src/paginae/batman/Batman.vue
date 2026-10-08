@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { House, Menu } from '@lucide/vue';
 
+import { House, Menu } from '@lucide/vue';
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -8,104 +8,79 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-
-
 import CarrusImaginum from '@/components/CarrusImaginum.vue';
-
 import { scrollToSection } from '@/utils/scrollToSection';
 import { onMounted, ref } from 'vue';
-
 import { Toggle } from '@/components/ui/toggle'
-
-
-
-const photos = ["justice", "arkham", "superman", "varios", "villana", "villano", "grupo", "robin", "anne", "joker", "resplandor", "cat", "gafas", "league", "fondoVerde"]; 
-
+const photos = ["justice", "arkham", "superman", "varios", "villana", "villano", "grupo", "robin", "anne", "joker", "resplandor", "cat", "gafas", "league", "fondoVerde"];
 const videreMenu = ref<boolean>(true)
-
 const handleResize = () => {
   if (window.innerWidth <= 640) {
     videreMenu.value = false;
   } else {
     videreMenu.value = true;
-    
- 
   }
 }
-
 onMounted(() => {
   handleResize()
   window.addEventListener('resize', handleResize);
 });
-
-
-
-
 </script>
 
 <template>
-
   <div class="batman">
-
-    <Toggle 
+    <Toggle
     class="fixed top-2 right-2 z-11 bg-slate-500 sm:hidden"
     @click="videreMenu = !videreMenu"
     >
       <Menu />
-
     </Toggle>
-
     <nav v-if="videreMenu" class="extra-nav flex flex-col sm:flex-row justify-between px-3">
       <RouterLink to="/">
       <House class="icon-home" />
     </RouterLink>
-
     <NavigationMenu>
       <NavigationMenuList class="flex flex-col sm:flex-row">
         <NavigationMenuItem>
-          <a href="#" @click.prevent="scrollToSection('#')"> 
+          <a href="#" @click.prevent="scrollToSection('#')">
             <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
               Portada
             </NavigationMenuLink>
           </a>
         </NavigationMenuItem>
-
          <NavigationMenuItem>
-          <a href="#vehiculis" @click.prevent="scrollToSection('#vehiculis')"> 
+          <a href="#vehiculis" @click.prevent="scrollToSection('#vehiculis')">
             <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
               Vehículos
             </NavigationMenuLink>
           </a>
         </NavigationMenuItem>
-
            <NavigationMenuItem>
-          <a href="#videre" @click.prevent="scrollToSection('#videre')"> 
+          <a href="#videre" @click.prevent="scrollToSection('#videre')">
             <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
               Imágenes
             </NavigationMenuLink>
           </a>
         </NavigationMenuItem>
-
            <NavigationMenuItem>
-          <a href="#contactus" @click.prevent="scrollToSection('#contactus')"> 
+          <a href="#contactus" @click.prevent="scrollToSection('#contactus')">
             <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
               Contacto
             </NavigationMenuLink>
           </a>
         </NavigationMenuItem>
-
       </NavigationMenuList>
     </NavigationMenu>
-
     </nav>
-    
     <header class="titulus">
       <h1>Batman</h1>
       <div id="titulus-batman" class="titulus-img"></div>
       <p> Él puede tomar la decisión que nadie más puede, la decisión correcta</p>
      </header>
-
    <section id="vehiculis">
+     <div class="vehiculis-titulus">
+      <h1>Vehículos de Batman</h1>
+    </div>
     <div class="vehiculis-arca">
       <div class="item unus">
           <div class="notitia">
@@ -115,7 +90,6 @@ onMounted(() => {
           </div>
           <img src="/imagines/batman/batman/avion.jpg"/>
         </div>
-
         <div class="item duo">
           <div class="notitia">
             <h2>Moto</h2>
@@ -124,7 +98,6 @@ onMounted(() => {
           </div>
           <img src="/imagines/batman/batman/moto.jpg"/>
         </div>
-        
         <div class="item tribus">
           <div class="notitia">
             <h2>Coche</h2>
@@ -134,46 +107,29 @@ onMounted(() => {
           <img src="/imagines/batman/batman/car.jpg"/>
         </div>
       </div>
-
-    <div class="vehiculis-titulus">
-      <h1>Vehículos de Batman</h1>
-    </div>
  </section>
-
  <section id="videre" class="w-full flex justify-center items-center min-h-[60vh] lg:min-h-[95vh] bg-gray-900">
-
-  <CarrusImaginum 
+  <CarrusImaginum
     :photos="photos"
     basePath="imagines/batman/batman"
   />
-   
-
  </section>
-
   </div>
 </template>
 
 <style scoped>
-
 .batman {
   font-family: Arial, Helvetica, sans-serif;
-
 }
-
 .icon-home {
   width: 3rem;
   height: 3rem;
   color: slateblue;
-
-
 }
-
 .icon-home:hover {
 color: white;
 background-color: slateblue;
-
 }
-
 .extra-nav {
   background-color: white;
   opacity: 0.7;
@@ -184,7 +140,6 @@ background-color: slateblue;
   border-radius: 0 0 1rem 0;
   z-index: 1;
 }
-
 @media (min-width: 640px){
   .extra-nav {
     width: 100%;
@@ -193,29 +148,25 @@ background-color: slateblue;
     left: 0;
   }
 }
-
 .titulus-img {
   background-image: url("../imagines/batman/batman/batman.jpg");
   background-size: 100% 100%;
   background-position: center center;
   min-height: 100vh;
 }
-
 .titulus-img:hover {
   background-size: 115% 115%;
 }
-
 .titulus > h1 {
   position: absolute;
   top: 63%;
   width: 100%;
   text-align: center;
-  font-size: 5rem; 
+  font-size: 5rem;
   color: white;
-  pointer-events:none; 
+  pointer-events:none;
   font-family: batman;
 }
-
 .titulus > p {
   position: absolute;
   top: 36%;
@@ -226,30 +177,28 @@ background-color: slateblue;
   pointer-events:none;
   font-family: batman;
   display: none;
-
 }
-
-@media (min-width: 768px) {
-  .titulus > p {
-    display:block
-
-  }
-  #vehiculis {
-  max-width: 510px;
+#vehiculis {
+  width: 80%;
   margin: 0 auto;
-  padding: 4rem 0;
+  padding: 2rem 0;
   display: flex;
   flex-direction: column;
 }
-
-.vehiculis-arca {
+.item > img {
+  width: 100%;
+}
+.notitia {
+  width: 90%;
+  margin: 0 auto;               /* centra la caja de texto */
+  padding: 1.5rem 0 1rem;       /* aire arriba y abajo */
   display: flex;
   flex-direction: column;
-  order: 1;
+  align-items: center;
 }
 
 .vehiculis-titulus {
-  height: 5.5rem; /* 88px */
+  height: 5.5rem;
   font-size: 2rem;
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
@@ -257,104 +206,105 @@ background-color: slateblue;
   justify-content: center;
   align-items: center;
 }
-
-.item {
-  padding: 1.5rem 0;
-  height: 540px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-
-}
-
-.item > img {
-  width: 450px;
-}
-
-.unus {
-  background-color: rgba(220, 220, 220, 0.2) ; 
-  order: 2;
-}
-
-.duo {
-  background-color: rgba(220, 220, 220, 0.8);
-
-}
-
-.tribus {
-  background-color: rgba(220, 220, 220, 0.8);
-  order: 3;
-}
-
-.notitia {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
- 
-.notitia > small {
-  font-weight: bold;
-  padding: 1rem;
-}
- 
-.notitia > h2 {
- font-size: 1.7rem; 
- font-weight: 600;
- color: rgba(0, 0, 0, 0.7);
- padding-bottom: 1rem;
-} 
-}
-
 @media (min-width: 640px) {
   #vehiculis {
     max-width: 576px;
   }
-}
-
-@media (min-width: 768px) {
-  #vehiculis {
-    max-width: 900px;
+  .item {
+    padding: 1.5rem 0;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
   }
 }
-
-.item {
-  flex-direction: row;
-  height: 320px;
-
+.unus {
+  background-color: rgba(220, 220, 220, 0.2);
+  order: 1;
 }
-.notitia {
-  width: 40%;
+.duo {
+  background-color: rgba(220, 220, 220, 0.8);
+  order: 2;
 }
-
-.unus > img {
-  order: -1;
+.tribus {
+  background-color: rgba(220, 220, 220, 0.8);
+  order: 3;
 }
+.notitia > small {
+  font-weight: bold;
+  padding: 1rem;
+}
+.notitia > h2 {
+ font-size: 1.7rem;
+ font-weight: 600;
+ color: rgba(0, 0, 0, 0.7);
+ padding-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .titulus > p {
+    display: block;
+  }
+  #vehiculis {
+    width: 90%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .vehiculis-arca {
+    display: flex;
+    flex-direction: column;       
+  }
+  .item {
+    flex-direction: row;          
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .item > img {
+    width: 50%;
+  }
+  .notitia {
+    width: 50%;
+    padding: 0;
+    margin: 0;
+  }
 
-
+  .duo    { order: 1; }
+  .unus   { order: 2; flex-direction: row-reverse; } 
+  .tribus { order: 3; }
+}
 
 @media (min-width: 1024px) {
   #vehiculis {
+    width: 80%;
     max-width: 1280px;
   }
-
   .vehiculis-arca {
-    flex-direction: row;
+    flex-direction: row;          
   }
-
   .item {
+    flex: 1;
     flex-direction: column;
+    justify-content: space-between;
     height: 560px;
+    padding: 1.5rem 0 0;
   }
-
+  .item > img {
+    width: 100%;
+  }
   .notitia {
     width: 90%;
+    padding: 0;
   }
-
-
+  .unus {
+    flex-direction: column-reverse;  
+    padding: 0 0 1.5rem;
+  }
 }
 
-
 </style>
-

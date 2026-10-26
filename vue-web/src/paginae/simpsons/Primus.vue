@@ -27,8 +27,10 @@ import Button from '@/components/ui/button/Button.vue';
       		<RouterLink to="/">Exit</RouterLink>
     	</Button>
     	<Button class="bg-white text-base border border-black hover:bg-simpsons-red focus:bg-simpsons-red rounded-none text-black h-7.5 py-0.5 px-5">
-      		<RouterLink to="">Enter</RouterLink>
+      		<RouterLink to="/simpsons/about">Enter</RouterLink>
     	</Button>
+
+      
 	</div>
 
   <div>

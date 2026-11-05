@@ -11,9 +11,31 @@ import {
 
 import { Input } from '@/components/ui/input'
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const dialogApertaEst = ref<boolean>(false)
   const quaestio = ref<string>('')
+
+const router = useRouter()
+
+const cumkeyPressumEnter = (eventus: KeyboardEvent) => {
+  if (eventus.key === 'Enter'){
+    const textusItinerans = quaestio.value.trim();
+
+    if (textusItinerans.length > 0 && textusItinerans.endsWith('?')) {
+      dialogApertaEst.value = false;
+      router.push({
+        path: `/indecision`,
+        state: { quaestio: textusItinerans },
+
+      });
+
+      quaestio.value = '';
+      
+      
+    }
+  }
+}
 
 </script>
 
@@ -34,7 +56,7 @@ const dialogApertaEst = ref<boolean>(false)
       Aprendiendo a crear aplicaciones web
     </p>
 
-    <div class="z-10">
+    <div class="z-1 flex gap-3">
 
     <Dialog
       :open="dialogApertaEst"
@@ -59,6 +81,7 @@ const dialogApertaEst = ref<boolean>(false)
             class="bg-domus-navy-input text-white placeholder:text-gray-400"
             placeholder="Escribe tu pregunta aquí..."
             v-model="quaestio"
+            @keydown="cumkeyPressumEnter"
           />
         </div>
       
